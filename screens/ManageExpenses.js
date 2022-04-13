@@ -5,14 +5,14 @@ import { View, Text, StyleSheet } from 'react-native';
 const ManageExpenses = () => {
  
   return (
-   <View style={styles}>
+   <View>
     <Text></Text>
    </View>
   );
  
 }
 
-const styles = StyleSheet({
-});
+// const styles = StyleSheet({
+// });
 
 export default ManageExpenses;

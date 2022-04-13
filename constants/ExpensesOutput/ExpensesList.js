@@ -3,7 +3,7 @@ import React, { Component } from 'react';
 import { View, Text, StyleSheet } from 'react-native';
 import { FlatList } from 'react-native';
 
-const ExpensesList = () => {
+function ExpensesList() {
  
   return (
   <FlatList />
@@ -11,7 +11,7 @@ const ExpensesList = () => {
  
 }
 
-const styles = StyleSheet({
-});
+// const styles = StyleSheet({
+// });
 
 export default ExpensesList;

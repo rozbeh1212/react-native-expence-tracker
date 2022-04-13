@@ -1,18 +1,15 @@
 //import liraries
 import React, { Component } from 'react';
 import { View, Text, StyleSheet } from 'react-native';
+import ExpensesOutput from '../constants/ExpensesOutput/ExpensesOutput';
 
-const AllExpenses = () => {
- 
-  return (
-   <View style={styles}>
-    <Text></Text>
-   </View>
-  );
- 
+
+
+function AllExpenses() {
+  return <ExpensesOutput expensesPeriod="Total"/>
 }
 
-const styles = StyleSheet({
-});
+// const styles = StyleSheet({
+// });
 
 export default AllExpenses;

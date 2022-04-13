@@ -4,15 +4,25 @@ import { View, Text, StyleSheet, FlatList } from "react-native";
 import ExpensesList from "./ExpensesList";
 import ExpensesSummery from "./ExpensesSummery";
 
-const ExpensesOutput = ({ expenses }) => {
+
+const DUMMY_EXPENSES = [
+  {
+    id: 'e1',
+    description: 'shoes',
+    amount: 50,
+    date: new Date('2021-12-12')
+  }
+]
+
+function ExpensesOutput ({ expenses,expensesPeriod}) {
   return (
-    <View style={styles}>
-    <ExpensesSummery />
-    <ExpensesList/>
+    <View>
+      <ExpensesSummery expenses={DUMMY_EXPENSES} priodName={expensesPeriod} />
+      <ExpensesList />
     </View>
   );
 };
 
-const styles = StyleSheet({});
+// const styles = StyleSheet({}); 
 
-export default ExpensesOutput;
+export default ExpensesOutput; 

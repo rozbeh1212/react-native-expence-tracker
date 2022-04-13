@@ -1,18 +1,14 @@
 //import liraries
 import React, { Component } from 'react';
 import { View, Text, StyleSheet } from 'react-native';
+import ExpensesOutput from '../constants/ExpensesOutput/ExpensesOutput';
+import RecentExpenses from './RecentExpenses';
 
-const RecentExpenses = () => {
- 
-  return (
-   <View style={styles}>
-    <Text></Text>
-   </View>
-  );
- 
+function RecentExpenses() {
+  return <ExpensesOutput expensesPeriod="Last 7 Days" />
 }
 
-const styles = StyleSheet({
-});
+// const styles = StyleSheet({
+// });
 
 export default RecentExpenses;

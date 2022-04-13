@@ -1,19 +1,21 @@
 //import liraries
-import React, { Component } from 'react';
-import { View, Text, StyleSheet } from 'react-native';
+import React, { Component } from "react";
+import { View, Text, StyleSheet } from "react-native";
 
-const ExpensesSummery = () => {
- 
+function ExpensesSummery({ expenses, priodName }) {
+  const expensesSum = expenses.reduce((sum, expense) => {
+    return sum + expense.amunt;
+  }, 0); //
+
   return (
     <View>
-      <Text></Text>
-      <Text></Text>
+      <Text>{priodName}</Text>
+      <Text>${expensesSum.toFixed(2)}</Text>
     </View>
   );
- 
 }
 
-const styles = StyleSheet({
-});
+// const styles = StyleSheet({
+// });
 
 export default ExpensesSummery;
