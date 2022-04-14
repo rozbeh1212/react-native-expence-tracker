@@ -14,15 +14,16 @@ const DUMMY_EXPENSES = [
   }
 ]
 
-function ExpensesOutput ({ expenses,expensesPeriod}) {
+
+function ExpensesOutput ({ expenses,expensesPeriod}) {  
   return (
     <View>
-      <ExpensesSummery expenses={DUMMY_EXPENSES} priodName={expensesPeriod} />
-      <ExpensesList />
+      <ExpensesSummery expenses={DUMMY_EXPENSES} priodName={expensesPeriod} /> 
+      <ExpensesList expenses={DUMMY_EXPENSES }/>
     </View>
   );
 };
 
 // const styles = StyleSheet({}); 
 
-export default ExpensesOutput; 
+export default ExpensesOutput;  // this is 

@@ -49,7 +49,7 @@ function ExpensesOverView() {
   );
 }
 
-export default function App() {
+export default function App() { 
   return (
     <>
       <StatusBar style='auto' />
