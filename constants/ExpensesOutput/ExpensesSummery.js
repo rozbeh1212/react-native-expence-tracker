@@ -3,7 +3,7 @@ import React, { Component } from "react";
 import { View, Text, StyleSheet } from "react-native";
 import { GlobalStyles } from "./../styles";
 
-function ExpensesSummery({ expenses, priodName }) {
+function ExpensesSummery({ expenses, priodName }) { // this function have two parameters: expenses and priodName   epxesns is an array of objects, priodName is a string 
   const expensesSum = expenses.reduce((sum, expense) => {
     return sum + expense.amunt;
   }, 0); //
