@@ -21,6 +21,17 @@ function ExpensesOverView() {
         headerTintColor: "white",
         tabBarStyle: { backgroundColor: GlobalStyles.colors.primary500 },
         tabBarActiveTintColor: GlobalStyles.colors.accent500,
+        headerRight: () => {
+          return (
+            <Ionicons
+              icon="add"
+              size={24}
+              color="white"
+              style={{ marginRight: 12 }}
+              
+            />
+          );
+        }
       }}
     >
       <BottomTabs.Screen
