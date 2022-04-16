@@ -21,7 +21,7 @@ const styles = StyleSheet.create({
   marginHorizontal: 2,
  },
  pressed: {
- // backgroundColor: "white",
+  backgroundColor: "GreenYellow",
   opacity: 0.75
  }
 });

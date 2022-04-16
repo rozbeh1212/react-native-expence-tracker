@@ -14,7 +14,7 @@ function ExpensesOverView() {
   //
   return (
     <BottomTabs.Navigator
-      screenOptions={{
+      screenOptions={({ navigation }) => ({
         headerStyle: {
           backgroundColor: GlobalStyles.colors.primary500,
         },
@@ -24,15 +24,17 @@ function ExpensesOverView() {
         headerRight: () => {
           return (
             <Ionicons
-              icon="add"
+              icon='add'
               size={24}
-              color="white"
+              color='white'
               style={{ marginRight: 12 }}
-              
+              onPress={() => {
+                navigation.navigate("ManageExpenses");
+              }}
             />
           );
-        }
-      }}
+        },
+      })}
     >
       <BottomTabs.Screen
         name='RecentExpenses'
@@ -60,18 +62,30 @@ function ExpensesOverView() {
   );
 }
 
-export default function App() { 
+export default function App() {
   return (
     <>
       <StatusBar style='auto' />
       <NavigationContainer>
-        <Stack.Navigator>
+        <Stack.Navigator
+          screenOptions={{
+            headerStyle: {
+              backgroundColor: GlobalStyles.colors.primary500,
+              headerTintColor: "white",
+            },
+          }}
+        >
           <Stack.Screen
-            name='ExpensesOverView' 
+            name='ExpensesOverView'
             component={ExpensesOverView}
             options={{ headerShown: false }}
           />
-          <Stack.Screen name='ManageExpense' component={ManageExpense} />
+          <Stack.Screen name='ManageExpense' component={ManageExpense} 
+            options={{
+               presentation: "modal", // modal screen in aniimation
+            }}
+
+          />
         </Stack.Navigator>
       </NavigationContainer>
     </>

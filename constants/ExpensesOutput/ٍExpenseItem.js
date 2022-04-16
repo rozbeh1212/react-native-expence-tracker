@@ -6,8 +6,11 @@ import { GlobalStyles } from "./../styles";
 import { getFormattedDate } from "./../../util/date";
 
 function ExpenseItem({ description, amount, date }) {
+  const navigation = useNavigation();
   function expensePressHandler() {
-    //
+    navigation.navigate("ManageExpenses", {
+      expenseId: id,
+    });
   }
   return (
     <Pressable
