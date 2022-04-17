@@ -16,12 +16,21 @@ function ManageExpenses({ route, navigation }) {
     });
   }, [navigation, isEditting]);
 
-function deleteExpenseHandler() {
-  
-}
+  function deleteExpenseHandler() {}
+
+  function cancleHandler() {}
+  function confirmHandler() {}
 
   return (
-    <View style={styles.container} >
+    <View style={styles.container}>
+      <View style={styles.buttons}>
+        <Button style={styles.button} mode='flat' onPress={cancleHandler}>
+          Cancle
+        </Button>
+        <Button style={styles.button} onPress={confirmHandler}>
+          {isEditting ? "Update" : "Add"}
+        </Button>
+      </View>
       {isEditting && (
         <View style={styles.deleteContainer}>
           <IconButton
@@ -42,13 +51,22 @@ const styles = StyleSheet({
     padding: 8,
     borderTopWidth: 2,
     borderTopColor: GlobalStyles.colors.error200,
-    alignItems: 'center',
+    alignItems: "center",
   },
   container: {
     flex: 1,
     padding: 24,
     backgroundColor: GlobalStyles.colors.primary800,
-  } 
+  },
+  buttons: {
+    flexDirection: "row",
+    justifyContent: "center",
+    alignItems: "center",
+  },
+  button: {
+    marginHorizontal: 8,
+    minWidth: 120,
+  },
 });
 
 export default ManageExpenses;
