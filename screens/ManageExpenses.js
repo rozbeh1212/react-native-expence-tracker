@@ -16,10 +16,20 @@ function ManageExpenses({ route, navigation }) {
     });
   }, [navigation, isEditting]);
 
-  function deleteExpenseHandler() {}
+  function deleteExpenseHandler() {
+    navigation.goBack(); //this will go back to the previous screen
+  }
+  
 
-  function cancleHandler() {}
-  function confirmHandler() {}
+  function cancleHandler() {
+    navigation.goBack(); 
+   }
+  
+  function confirmHandler() {
+    navigation.goBack(); 
+  }
+   }
+  
 
   return (
     <View style={styles.container}>

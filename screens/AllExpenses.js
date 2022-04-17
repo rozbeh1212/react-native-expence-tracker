@@ -1,12 +1,14 @@
 //import liraries
-import React, { Component } from 'react';
+import React, { useContext } from 'react';
 import { View, Text, StyleSheet } from 'react-native';
+import { useContext } from 'react/cjs/react.production.min';
 import ExpensesOutput from '../constants/ExpensesOutput/ExpensesOutput';
-
+import { ExpensesContext } from '../store/exprenses-context';
 
 
 function AllExpenses() {
-  return <ExpensesOutput expensesPeriod="Total"/>
+  const expensesCtx =  useContext(ExpensesContext);
+  return <ExpensesOutput expenses={expensesCtx.expenses} expensesPeriod="Total"/>
 }
 
 // const styles = StyleSheet({
