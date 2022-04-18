@@ -1,6 +1,5 @@
 {
   "colorHelper.pickerForm": "simple",
-  "colorHelper.formatsOrder": [
-  
-  ]
+  "colorHelper.formatsOrder": [],
+  "files.autoSave": "afterDelay"
 }

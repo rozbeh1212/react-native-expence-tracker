@@ -1,10 +1,13 @@
 //import liraries
-import { View, Text } from "react-native";
-import { useLayoutEffect } from "react";
+import { View, Text, TextInput } from "react-native";
+import { useLayoutEffect, useContext } from "react";
 import IconButton from "../constants/UI/IconButton";
-import { GlobalStyles } from "../constants/GlobalStyles";
 import { GlobalStyles } from "./../constants/styles";
-import { useContext } from "react";
+import { Button } from "../components/UI/Button";
+import { ExpensesContext } from "../store/ExpensesContext";
+
+
+
 function ManageExpenses({ route, navigation }) {
   //rout is a prop of ManageExpenses component to pass to it parent component
   const editedExpenseId = route.params.expenseId; //this is the id of the expense that we want to edit
@@ -47,6 +50,7 @@ function ManageExpenses({ route, navigation }) {
 
   return (
     <View style={styles.container}>
+      <TextInput/>
       <View style={styles.buttons}>
         <Button style={styles.button} mode='flat' onPress={cancleHandler}>
           Cancle
