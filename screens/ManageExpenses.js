@@ -5,8 +5,7 @@ import IconButton from "../constants/UI/IconButton";
 import { GlobalStyles } from "./../constants/styles";
 import { Button } from "../components/UI/Button";
 import { ExpensesContext } from "../store/ExpensesContext";
-
-
+import { ExpenseForm } from "./../constants/ManageExpense/ExpenseForm";
 
 function ManageExpenses({ route, navigation }) {
   //rout is a prop of ManageExpenses component to pass to it parent component
@@ -31,8 +30,9 @@ function ManageExpenses({ route, navigation }) {
 
   function confirmHandler() {
     if (isEditting) {
-      expepensesCtx.updateExpense({ // this is the function that we imported from the context
-         editedExpenseId,//this is the id of the expense that we want to edit
+      expepensesCtx.updateExpense({
+        // this is the function that we imported from the context
+        editedExpenseId, //this is the id of the expense that we wanimport ExpenseForm from './../constants/ManageExpense/ExpenseForm';
         description: "T",
         amount: 0,
         date: new Date(),
@@ -50,7 +50,7 @@ function ManageExpenses({ route, navigation }) {
 
   return (
     <View style={styles.container}>
-      <TextInput/>
+      <ExpenseForm />
       <View style={styles.buttons}>
         <Button style={styles.button} mode='flat' onPress={cancleHandler}>
           Cancle
