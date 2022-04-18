@@ -31,7 +31,7 @@ const ExpensesContext = createContext({
 function expensesReducer(state, action) {
   switch (action.type) {
     case "ADD":
-      return [...state, action.expense];
+      return [...state, action.expense]; // [...state, action.expense] means add the expense to the state rest of the array and return  the new state
     case "DELETE":
       return state.filter((expense) => expense.id !== action.id);
     case "UPDATE":

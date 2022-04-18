@@ -4,11 +4,12 @@ import { useLayoutEffect } from "react";
 import IconButton from "../constants/UI/IconButton";
 import { GlobalStyles } from "../constants/GlobalStyles";
 import { GlobalStyles } from "./../constants/styles";
+import { useContext } from "react";
 function ManageExpenses({ route, navigation }) {
   //rout is a prop of ManageExpenses component to pass to it parent component
   const editedExpenseId = route.params.expenseId; //this is the id of the expense that we want to edit
   const isEditting = !!editedExpenseId; // if editedExpenseId is not null or undefined then isEditting is true
-
+  const expepensesCtx = useContext(ExpensesContext);
   useLayoutEffect(() => {
     // this is a hook to set the title of the screen to the name of the expense that we want to edit if it is editting else to set the title to add new expense
     navigation.setOptions({
@@ -18,18 +19,31 @@ function ManageExpenses({ route, navigation }) {
 
   function deleteExpenseHandler() {
     navigation.goBack(); //this will go back to the previous screen
+    expepensesCtx.deleteExpense(editedExpenseId);
   }
-  
 
   function cancleHandler() {
-    navigation.goBack(); 
-   }
-  
-  function confirmHandler() {
-    navigation.goBack(); 
+    navigation.goBack();
   }
-   }
-  
+
+  function confirmHandler() {
+    if (isEditting) {
+      expepensesCtx.updateExpense({ // this is the function that we imported from the context
+         editedExpenseId,//this is the id of the expense that we want to edit
+        description: "T",
+        amount: 0,
+        date: new Date(),
+      });
+    } else {
+      expepensesCtx.addExpense({
+        description: "",
+        amount: 0,
+        date: new Date(),
+      });
+
+      navigation.goBack();
+    }
+  }
 
   return (
     <View style={styles.container}>
