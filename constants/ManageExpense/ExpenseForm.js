@@ -1,8 +1,22 @@
 import { View } from "react-native";
 import React from "react";
 
-function ExpenseForm(){
-  function amountChangeHandler() {}
+function ExpenseForm() {
+  const [inputValue, setInputValue] = useState({
+    amount: "",
+    date: "",
+    description: "",
+  });
+
+  function inputChangeHandler(inputIdentifier, enteredValue) { //this function has two parameters inputIdentifier and enteredValue which are the name of the input and the value of the input 
+    setInputValue((curInputValues) => { //  curInputValues is the current state of the inputValue
+      return {
+        ...curInputValues,
+        [inputIdentifier]: enteredValue,
+      };
+    });
+  }
+
   return (
     <View style={styles.form}>
       <View style={styles.inputs}>
@@ -11,7 +25,8 @@ function ExpenseForm(){
           lable='Amount'
           textInputConfig={{
             keyboardType: "decimal-pad",
-            onChangeText: amountChangeHandler,
+            onChangeText: inputChangeHandler.bind(this, "amount"), //this is the function that we imported from the context
+            value: inputValue.amount, //this is the value of the input
           }}
         />
         <Input
@@ -20,7 +35,8 @@ function ExpenseForm(){
           textInputConfig={{
             palaceholder: "YYYY-MM-DD",
             maxLenght: 10,
-            onChangeText: () => {},
+            onChangeText: inputChangeHandler.bind(this, "date"),
+            value: inputValue.date,
           }}
         />
       </View>
@@ -30,6 +46,8 @@ function ExpenseForm(){
           multiline: true,
           autoCapitalize: "sentences",
           autoCorrect: false,
+          onChangeText: inputChangeHandler.bind(this, "description"),
+          value: inputValue.description,
         }}
       />
     </View>
@@ -38,16 +56,15 @@ function ExpenseForm(){
 
 const styles = StyleSheet.create({
   form: {
-     marginTop: 50,
+    marginTop: 50,
   },
   inputs: {
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-
+    flexDirection: "row",
+    justifyContent: "space-between",
   },
   rowInput: {
-   flex: 1,
+    flex: 1,
   },
 });
- 
+
 export default ExpenseForm;
