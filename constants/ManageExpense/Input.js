@@ -1,28 +1,26 @@
 import React from 'react';
 import { View, Text,TextInput, View, StyleSheet } from 'react-native';
 
-export default function Input({ label, textInputConfig, value, onChangeText, placeholder, secureTextEntry }) {
-  const inputStyles = [style.input];
+export default function Input({ label, textInputConfig,style }) {
+  const inputStyles = [styles.input];
 
   if (textInputConfig && textInputConfig.multiline) {
-    inputStyles.push(style.multiline);
+    inputStyles.push(styles.multiline);
   }
 
   
-
-
-
   return (
-    <View style={style.inputConainer}>
-      <Text style={style.label}>{label}</Text>
-      <TextInput style={style.input} {...textInputConfig} />
+    <View style={{ styles.inputConainer, style }}>
+      <Text style={styles.label}>{label}</Text>
+      <TextInput style={styles.input} {...textInputConfig} />
     </View>
   );
 }
-const style = StyleSheet.create({
+const styles = StyleSheet.create({
   inputConainer: {
     marginHorizontal: 4,
     marginVertical: 9,
+     
   },
   label: {
     fontSize: 13,
