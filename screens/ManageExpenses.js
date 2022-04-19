@@ -50,7 +50,7 @@ function ManageExpenses({ route, navigation }) {
   return (
     <View style={styles.container}>
       <ExpenseForm
-        submitButtonLable={isEditting ? "Update" : "Add"}
+        submitButtonLabel={isEditting ? "Update" : "Add"}
         onCancel={cancleHandler}
       />
 
