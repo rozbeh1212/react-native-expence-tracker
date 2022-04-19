@@ -1,22 +1,30 @@
 import { View } from "react-native";
 import React from "react";
+import Input from "./Input";
+import Button from "../UI/Button";
 
-function ExpenseForm() {
+function ExpenseForm(onCancel, onSubmit) {
   const [inputValue, setInputValue] = useState({
     amount: "",
     date: "",
     description: "",
   });
 
-  function inputChangeHandler(inputIdentifier, enteredValue) { //this function has two parameters inputIdentifier and enteredValue which are the name of the input and the value of the input 
-    setInputValue((curInputValues) => { //  curInputValues is the current state of the inputValue
+  function inputChangeHandler(submitButtonLabel ,inputIdentifier, enteredValue) {
+    //this function has two parameters inputIdentifier and enteredValue which are the name of the input and the value of the input
+    setInputValue((curInputValues) => {
+      //  curInputValues is the current state of the inputValue
       return {
         ...curInputValues,
         [inputIdentifier]: enteredValue,
       };
     });
   }
-
+ 
+  function submitHandler() {
+    
+  }
+    
   return (
     <View style={styles.form}>
       <View style={styles.inputs}>
@@ -50,6 +58,14 @@ function ExpenseForm() {
           value: inputValue.description,
         }}
       />
+      <View style={styles.buttons}>
+        <Button style={styles.button} mode='flat' onPress={onCancel}>
+          Cancle
+        </Button>
+        <Button style={styles.button} onPress={submitHandler}>
+          {submitButtonLabel}
+        </Button>
+      </View>
     </View>
   );
 }
@@ -64,6 +80,15 @@ const styles = StyleSheet.create({
   },
   rowInput: {
     flex: 1,
+  },
+  buttons: {
+    flexDirection: "row",
+    justifyContent: "center",
+    alignItems: "center",
+  },
+  button: {
+    marginHorizontal: 8,
+    minWidth: 120,
   },
 });
 
