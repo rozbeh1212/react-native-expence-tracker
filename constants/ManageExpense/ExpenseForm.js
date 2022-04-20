@@ -3,7 +3,7 @@ import React from "react";
 import Input from "./Input";
 import Button from "../UI/Button";
 
-function ExpenseForm(onCancel,onCancel, onSubmit, defaultValue) {
+function ExpenseForm({onCancel, onCancel, onSubmit, defaultValue}) {
   const [inputValue, setInputValue] = useState({
     amount: "",
     date: "",
