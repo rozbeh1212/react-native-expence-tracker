@@ -11,6 +11,11 @@ function ManageExpenses({ route, navigation }) {
   const editedExpenseId = route.params.expenseId; //this is the id of the expense that we want to edit
   const isEditting = !!editedExpenseId; // if editedExpenseId is not null or undefined then isEditting is true
   const expepensesCtx = useContext(ExpensesContext);
+  const selectedExpense = expepensesCtx.expenses.find( 
+    (expense) => expense.id === editedExpenseId
+  );
+
+
   useLayoutEffect(() => {
     // this is a hook to set the title of the screen to the name of the expense that we want to edit if it is editting else to set the title to add new expense
     navigation.setOptions({
@@ -27,31 +32,22 @@ function ManageExpenses({ route, navigation }) {
     navigation.goBack();
   }
 
-  function confirmHandler() {
+  function confirmHandler(expenseData) {
     if (isEditting) {
-      expepensesCtx.updateExpense({
-        // this is the function that we imported from the context
-        editedExpenseId, //this is the id of the expense that we wanimport ExpenseForm from './../constants/ManageExpense/ExpenseForm';
-        description: "T",
-        amount: 0,
-        date: new Date(),
-      });
+      expepensesCtx.updateExpense(editedExpenseId, expenseData);
     } else {
-      expepensesCtx.addExpense({
-        description: "",
-        amount: 0,
-        date: new Date(),
-      });
-
-      navigation.goBack();
+      expepensesCtx.addExpense(expenseData);
     }
+    navigation.goBack();
   }
 
   return (
     <View style={styles.container}>
       <ExpenseForm
         submitButtonLabel={isEditting ? "Update" : "Add"}
+        onSubmit={confirmHandler} //this is the function that we imported from the context
         onCancel={cancleHandler}
+        defaultValue={selectedExpense}
       />
 
       {isEditting && (

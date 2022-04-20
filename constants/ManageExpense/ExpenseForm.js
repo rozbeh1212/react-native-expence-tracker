@@ -3,15 +3,19 @@ import React from "react";
 import Input from "./Input";
 import Button from "../UI/Button";
 
-function ExpenseForm(onCancel, onSubmit) {
+function ExpenseForm(onCancel,onCancel, onSubmit, defaultValue) {
   const [inputValue, setInputValue] = useState({
     amount: "",
     date: "",
     description: "",
   });
+  //this function has  three parameters inputIdentifier and enteredValue which are the name of the input and the value of the input
 
-  function inputChangeHandler(submitButtonLabel ,inputIdentifier, enteredValue) {
-    //this function has two parameters inputIdentifier and enteredValue which are the name of the input and the value of the input
+  function inputChangeHandler(
+    submitButtonLabel,
+    inputIdentifier,
+    enteredValue
+  ) {
     setInputValue((curInputValues) => {
       //  curInputValues is the current state of the inputValue
       return {
@@ -20,11 +24,18 @@ function ExpenseForm(onCancel, onSubmit) {
       };
     });
   }
- 
+
   function submitHandler() {
-    
+    // this function is called when the submit button is pressed
+    const expense = {
+      // expense is the object that is passed to the onSubmit
+      amount: +inputValue.amount, // +inputValue.amount is used to convert the string to a number
+      date: new Date(inputValue.date),
+      description: inputValue.description,
+    };
+    onSubmit(expense); // onSubmit is the function passed to the ExpenseForm component
   }
-    
+
   return (
     <View style={styles.form}>
       <View style={styles.inputs}>
